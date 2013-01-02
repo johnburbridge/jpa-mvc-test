@@ -9,6 +9,7 @@ import org.metabuild.poc.services.GroupService;
 import org.metabuild.poc.services.PersonService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
@@ -16,7 +17,8 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 public class AppRunner {
 
-	private final static ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//	private final static ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+	private final static ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 
 	protected void printPersons() {
 		
@@ -43,9 +45,9 @@ public class AppRunner {
 	protected void printPersonsDetailsJavaConfig() {
 	
 		PersonService personService = (PersonService) context.getBean("personService");
-		JpaTransactionManager transactionManager = (JpaTransactionManager) context.getBean("transactionManager");
-		TransactionDefinition defintion = new DefaultTransactionDefinition();
-		TransactionStatus status = transactionManager.getTransaction(defintion);
+//		JpaTransactionManager transactionManager = (JpaTransactionManager) context.getBean("transactionManager");
+//		TransactionDefinition defintion = new DefaultTransactionDefinition();
+//		TransactionStatus status = transactionManager.getTransaction(defintion);
 		
 		List<Person> persons = personService.findByName("person0");
 		System.out.println("Listing person with details:");
@@ -62,7 +64,7 @@ public class AppRunner {
 			System.err.println("No records found!");
 		}
 		
-		transactionManager.commit(status);
+//		transactionManager.commit(status);
 	}
 	
 	/**
