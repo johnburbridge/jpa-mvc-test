@@ -4,6 +4,8 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.metabuild.poc.services.PersonService;
+import org.metabuild.poc.services.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,19 +19,18 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = { "org.metabuild.poc.services" })
 @EnableJpaRepositories(basePackages="org.metabuild.poc.repositories")
-public class SpringConfig implements TransactionManagementConfigurer {
+public class SpringConfig {
 
 	@Bean(name="hibernateProperties")
 	public Properties getHibernateProperties() {
 		final Properties hibernateProperties = new Properties();
 		hibernateProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		hibernateProperties.put("hibernate.max_fetch_depth", 3);
+		hibernateProperties.put("hibernate.max_fetch_depth", 5);
 		hibernateProperties.put("hibernate.jdbc.fetch_size", 50);
 		hibernateProperties.put("hibernate.jdbc.batch_size", 10);
 		hibernateProperties.put("hibernate.show_sql", true);
@@ -74,11 +75,5 @@ public class SpringConfig implements TransactionManagementConfigurer {
 	@Bean(name="persistenceExceptionTranslator")
 	public HibernateExceptionTranslator getPersistExceptionTranslator() {
 		return new HibernateExceptionTranslator();
-	}
-
-	@Override
-	public PlatformTransactionManager annotationDrivenTransactionManager() {
-		return getTransactionManager(getEntityManagerFactory(getDataSource(), 
-				getHibernateProperties()));
 	}
 }

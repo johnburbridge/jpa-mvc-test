@@ -17,8 +17,8 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 public class AppRunner {
 
-//	private final static ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-	private final static ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+	private final static ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//	private final static ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 
 	protected void printPersons() {
 		
