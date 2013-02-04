@@ -4,6 +4,7 @@
 apply plugin: 'war'
 apply plugin: 'maven'
 apply plugin: 'eclipse-wtp';
+apply plugin: 'idea';
 
 // add the spring nature to eclipse
 eclipse {
