@@ -15,4 +15,5 @@ public class AppRunnerTest {
         runner.printGroups();
         runner.printPersonsDetailsJavaConfig();
     }
+
 }

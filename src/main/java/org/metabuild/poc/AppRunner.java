@@ -21,9 +21,9 @@ public class AppRunner {
 	private final static ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 
 	protected void printPersons() {
-		
+
 		PersonService personService = (PersonService) context.getBean("personService");
-		
+
 		System.out.println("Listing persons:");
 		for (Person person : personService.findAll()) {
 			System.out.println(person.getId() + " : " + person.getName());
