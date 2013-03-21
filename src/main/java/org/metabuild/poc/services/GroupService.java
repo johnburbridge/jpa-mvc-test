@@ -11,4 +11,6 @@ public interface GroupService {
 	public List<Group> findAll();
 	
 	public Group findById(String id);
+
+	public Group save(Group group);
 }

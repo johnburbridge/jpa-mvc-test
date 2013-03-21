@@ -32,4 +32,9 @@ public class PersonServiceImpl implements PersonService {
 	public Person findById(String id) {
 		return repository.findById(id);
 	}
+
+	@Override
+	public Person save(Person newPerson) {
+		return repository.save(newPerson);
+	}
 }

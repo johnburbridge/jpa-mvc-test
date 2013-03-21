@@ -15,5 +15,7 @@ public interface PersonService {
 	
 	@Transactional
 	public Person findById(String id);
+
+	public Person save(Person newPerson);
 	
 }

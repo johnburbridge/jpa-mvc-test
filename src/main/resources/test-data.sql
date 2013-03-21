@@ -15,11 +15,11 @@ insert into GROUPS (ID, NAME) values
     ('1848d4b8-93b9-4970-be41-b366517af44b','evens'),
     ('f2c1fafa-af63-499b-8bdb-d7a0df26837f','other');
 
-insert into GROUP_MEMBERS (ID, GROUP_ID, PERSON_ID) values 
-    ('b64399cd-a05c-4b88-99da-b18c9b16849c', '225c172b-950f-4c24-9ee7-4d3b4ea1cf55', '9741afbb-a1be-47e0-9aa9-8a7f3702ffea'),
-    ('44566de3-b313-4e68-a868-437858d82aec', '225c172b-950f-4c24-9ee7-4d3b4ea1cf55', 'a56fde5f-0033-4050-8964-2b8d7470ee28'),
-    ('c47946af-7482-4b4d-85b3-5f5424de3b13', '1848d4b8-93b9-4970-be41-b366517af44b', 'a85765e0-7e90-47b9-aea3-7da16117d274'),
-    ('62f51b8d-4ca3-4dbc-86ca-e2f8ede55cc8', '1848d4b8-93b9-4970-be41-b366517af44b', '686ffd94-cbf7-4767-bf77-9d529b0087e7'),
-    ('f311841c-4af6-4c4c-8e1d-8dd5ca84d7e7', '1848d4b8-93b9-4970-be41-b366517af44b', '952ed06c-0283-4866-b8e6-d16ca6f57312');
+insert into GROUP_MEMBERS (GROUP_ID, PERSON_ID) values 
+    ('225c172b-950f-4c24-9ee7-4d3b4ea1cf55', '9741afbb-a1be-47e0-9aa9-8a7f3702ffea'),
+    ('225c172b-950f-4c24-9ee7-4d3b4ea1cf55', 'a56fde5f-0033-4050-8964-2b8d7470ee28'),
+    ('1848d4b8-93b9-4970-be41-b366517af44b', 'a85765e0-7e90-47b9-aea3-7da16117d274'),
+    ('1848d4b8-93b9-4970-be41-b366517af44b', '686ffd94-cbf7-4767-bf77-9d529b0087e7'),
+    ('1848d4b8-93b9-4970-be41-b366517af44b', '952ed06c-0283-4866-b8e6-d16ca6f57312');
 
 
