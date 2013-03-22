@@ -17,8 +17,8 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 public class AppRunner {
 
-//	private final static ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-	private final static ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+	private final static ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//	private final static ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 
 	protected void printPersons() {
 
@@ -45,14 +45,14 @@ public class AppRunner {
 	protected void printPersonsDetailsJavaConfig() {
 	
 		PersonService personService = (PersonService) context.getBean("personService");
-//		JpaTransactionManager transactionManager = (JpaTransactionManager) context.getBean("transactionManager");
-//		TransactionDefinition defintion = new DefaultTransactionDefinition();
-//		TransactionStatus status = transactionManager.getTransaction(defintion);
+		JpaTransactionManager transactionManager = (JpaTransactionManager) context.getBean("transactionManager");
+		TransactionDefinition defintion = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(defintion);
 		
 		List<Person> persons = personService.findByName("person0");
 		System.out.println("Listing person with details:");
 		if (persons.size() > 0) {
-			StringBuilder stringBuilder = new StringBuilder("Found record(s)!\n");
+			StringBuilder stringBuilder = new StringBuilder();
 			for (Person person : persons) {
 				stringBuilder.append("Id: ").append(person.getId()).append("\n")
 					.append("Name:" ).append(person.getName()).append("\n")
@@ -64,7 +64,7 @@ public class AppRunner {
 			System.err.println("No records found!");
 		}
 		
-//		transactionManager.commit(status);
+		transactionManager.commit(status);
 	}
 	
 	/**
