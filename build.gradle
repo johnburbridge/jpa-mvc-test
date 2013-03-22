@@ -18,7 +18,18 @@ sourceCompatibility = 1.6;
 targetCompatibility = 1.6;
 
 repositories {
-  mavenCentral()
+/*
+	maven {
+		name 'mavenCentral'
+		url 'http://repo1.maven.org/maven2'
+		// workaround due to licensing issues with javax packages
+		artifactUrls 'http://repository.jboss.org/nexus/content/groups/public'
+	}
+*/
+	maven {
+		name 'metabuild'
+		url 'http://webcore-build1-1.internal.salesforce.com:8080/artifactory/repo/'
+	}
 }
 
 dependencies {
@@ -31,11 +42,11 @@ dependencies {
 	compile 'org.slf4j:slf4j-api:1.7.1',
 		'javax.mail:mail:1.4.5',
 		'javax.activation:activation:1.1.1',
-		'org.springframework:spring-core:3.2.0.RELEASE',
-		'org.springframework:spring-webmvc:3.2.0.RELEASE',
-		'org.springframework:spring-orm:3.2.0.RELEASE',
+		'org.springframework:spring-core:3.2.2.RELEASE',
+		'org.springframework:spring-webmvc:3.2.2.RELEASE',
+		'org.springframework:spring-orm:3.2.2.RELEASE',
 		'org.springframework.data:spring-data-jpa:1.2.0.RELEASE',
-		'org.springframework:spring-tx:3.2.0.RELEASE',
+		'org.springframework:spring-tx:3.2.2.RELEASE',
 		'org.hibernate:hibernate-entitymanager:4.1.7.Final',
 		'org.apache.tiles:tiles-core:3.0.1',
 		'org.apache.tiles:tiles-template:3.0.1',
@@ -49,5 +60,5 @@ dependencies {
 	
 	testCompile 'org.mockito:mockito-all:1.8.5',
 		'junit:junit:4.11',
-		'org.springframework:spring-test:3.2.0.RELEASE'
+		'org.springframework:spring-test:3.2.2.RELEASE'
 }
