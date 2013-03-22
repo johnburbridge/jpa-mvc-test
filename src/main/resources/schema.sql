@@ -15,11 +15,11 @@ create table GROUPS (
 ); 
 
 create table GROUP_MEMBERS (
-  PERSON_ID varchar(36) not null, 
   GROUP_ID varchar(36) not null, 
-  constraint FK_GROUP_MEMBERS_1 foreign key (PERSON_ID)
-    references PERSONS (ID) on delete cascade,
-  constraint FK_GROUP_MEMBERS_2 foreign key (GROUP_ID)
+  PERSON_ID varchar(36) not null, 
+  constraint FK_GROUP_MEMBERS_1 foreign key (GROUP_ID)
     references GROUPS (ID) on delete cascade,
-  primary key (PERSON_ID, GROUP_ID) 
+  constraint FK_GROUP_MEMBERS_2 foreign key (PERSON_ID)
+    references PERSONS (ID) on delete cascade,
+  primary key (GROUP_ID, PERSON_ID) 
 ); 

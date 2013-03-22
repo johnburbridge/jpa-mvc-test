@@ -5,6 +5,7 @@ package org.metabuild.poc.domain;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -48,7 +49,7 @@ public class Person implements Serializable {
 	public Person() {}
 	
 	public Person(String name) {
-		this.id = UUID.randomUUID().toString();
+//		this.id = UUID.randomUUID().toString();
 		this.name = name;
 	}
 
@@ -92,5 +93,19 @@ public class Person implements Serializable {
 	 */
 	public void setGroups(Set<Group> groups) {
 		this.groups = groups;
+	}
+
+	/**
+	 * @param group the group to add
+	 */
+	public void addGroup(Group group) {
+		groups.add(group);
+	}
+	
+	/**
+	 * @param groups the groups to add
+	 */
+	public void addGroups(List<Group> groups) {
+		this.groups.addAll(groups);
 	}
 }

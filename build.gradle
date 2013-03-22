@@ -4,7 +4,6 @@
 apply plugin: 'war'
 apply plugin: 'maven'
 apply plugin: 'eclipse-wtp';
-apply plugin: 'idea';
 
 // add the spring nature to eclipse
 eclipse {
@@ -17,18 +16,22 @@ eclipse {
 sourceCompatibility = 1.6;
 targetCompatibility = 1.6;
 
-repositories {
-/*
-	maven {
-		name 'mavenCentral'
-		url 'http://repo1.maven.org/maven2'
-		// workaround due to licensing issues with javax packages
-		artifactUrls 'http://repository.jboss.org/nexus/content/groups/public'
+sourceSets {
+	integration
+}
+
+configurations {
+	integrationCompile {
+		extendsFrom testCompile
 	}
-*/
+	integrationRuntime {
+		extendsFrom testRuntime
+	}
+}
+
+repositories {
 	maven {
-		name 'metabuild'
-		url 'http://webcore-build1-1.internal.salesforce.com:8080/artifactory/repo/'
+		url 'http://repo.metabuild.net/artifactory/repo/'
 	}
 }
 
@@ -61,4 +64,22 @@ dependencies {
 	testCompile 'org.mockito:mockito-all:1.8.5',
 		'junit:junit:4.11',
 		'org.springframework:spring-test:3.2.2.RELEASE'
+	
+	integrationCompile sourceSets.main.output,
+		configurations.testCompile,
+		sourceSets.test.output
+	
+	integrationRuntime configurations.testRuntime,
+		configurations.testCompile
+
+}
+
+task integrationTest(type: Test) {
+	testClassesDir = sourceSets.integration.output.classesDir
+	classpath = sourceSets.integration.runtimeClasspath
+}
+
+integrationTest {
+	exclude '**/AbstractDataTester*'
+	systemProperty 'spring.profiles.active', 'integration-test'
 }

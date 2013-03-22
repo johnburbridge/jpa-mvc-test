@@ -37,4 +37,9 @@ public class GroupServiceImpl implements GroupService {
 	public Group findById(String id) {
 		return repository.findById(id);
 	}
+
+	@Override
+	public Group save(Group group) {
+		return repository.save(group);
+	}
 }
