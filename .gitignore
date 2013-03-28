@@ -1,5 +1,8 @@
 .*
 !.gitignore
 *.iml
+*.orig
 classes/*
 /bin
+/build
+
